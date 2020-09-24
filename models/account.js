@@ -9,6 +9,11 @@ const schema = new mongoose.Schema({
         type: String,
         required: true
     },
+    lastupdate:{
+        type:String,
+        required:true,
+        default:null
+    },
     data: {
         type: {},
         default: {}
