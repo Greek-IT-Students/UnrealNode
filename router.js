@@ -39,7 +39,7 @@ router.use('/getData', (req, res, next) => {
         if (err) return next(err);
         if (!password) return next(new Error('enter your password!'));
         if (!account) return next(new Error('account cannot be found!'));
-         if (!timedate) return next(new Error('Data never saved invalid fetch'));
+         if (!account.lastupdate) return next(new Error('Data never saved invalid fetch'));
         
         res.json({status: 200, message: 'ok', account: account});
     });
