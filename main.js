@@ -1,5 +1,7 @@
 
 'use strict';
+const SetDefaultResposeHeaders =  require("./ResposeHeaders").DefaultResposeHeaders;
+
 const bodyParser = require('body-parser');
 const express = require('express');
 const replacer = require('./replacer.js');
@@ -26,9 +28,15 @@ app.use(bodyParser.json({limit: '1mb'}));
 app.use(bodyParser.urlencoded({limit: '1mb', extended: true}));
 //http polution
 app.use(hpp());
+//static content
 app.use('/static', express.static('public'));
+//get request data either from  body or as query params
 app.use(replacer);
 
+app.use(SetDefaultResposeHeaders());
+
+
+//our main endpoints
 app.use('/api/', router);
 
 app.use('/', (req, res, next) => {
@@ -46,12 +54,30 @@ process.on('uncaughtException', function (err) {
     console.error(err.stack);
 });
 
-app.listen(app.get('port'), function () {
+let server = app.listen(app.get('port'), function () {
     console.log('AuthSystem started on port', app.get('port'));
 });
 
+process.on('SIGINT', () => {
+    console.log('---sigint signal received---');
+    console.log('---initiating shutdown---');
+    server.close(() => {
+        mongoose.connection.close(false, () => {
+            console.log('db connection dropped, controlled');
+            process.exit(0);
+        });
+    });
+});
+
 process.on('SIGTERM', () => {
-    app.close(() => {
+    console.log('---sigterm signal received---');
+    server.close(() => {
+
+    console.log('Termination forced');
+
+    mongoose.connection.close(false, () => {
+        console.log('db connection dropped, forced');
         process.exit(0);
+    });
     });
 });

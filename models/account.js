@@ -17,7 +17,12 @@ const schema = new mongoose.Schema({
     data: {
         type: {},
         default: {}
-    }
+    },
+    ip:{
+        type:String,
+        required:true,
+        default:null
+    },
 });
 
 module.exports = mongoose.model('Account', schema);

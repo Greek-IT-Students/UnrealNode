@@ -16,6 +16,7 @@ router.use('/register', (req, res, next) => {
             username: username,
             password: password,
             lastupdate:timedatestring,
+            ip: req.client_ip_address,
             data:{
                 SessionsCount: 1
             }
@@ -40,8 +41,9 @@ router.use('/getData', (req, res, next) => {
         if (!password) return next(new Error('enter your password!'));
         if (!account) return next(new Error('account cannot be found!'));
          if (!account.lastupdate) return next(new Error('Data never saved invalid fetch'));
-        
-        res.json({status: 200, message: 'ok', account: account});
+         if (!account.lastupdate) return next(new Error('No ip Error'));
+
+         res.json({status: 200, message: 'ok', account: account});
     });
 });
 
@@ -59,7 +61,7 @@ router.use('/saveData', function (req, res, next) {
     Account.findOneAndUpdate({
         'username': username,
         'password': password
-    }, {$addToSet: {'data.Session': data}, $set:{'data.SessionsCount': sessionscount},$set:{'lastupdate': timedatestring}}, {new: true}, (err, account) => {
+    }, {$addToSet: {'data.Session': data}, $set:{'data.SessionsCount': sessionscount},$set:{'lastupdate': timedatestring},$set:{'ip':req.client_ip_address}}, {new: true}, (err, account) => {
         if (err) return next(err);
 
         if (!account) return next(new Error('account not registered!'));

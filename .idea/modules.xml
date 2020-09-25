@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/UnrealNode.iml" filepath="$PROJECT_DIR$/.idea/UnrealNode.iml" />
+      <module fileurl="file://$USER_HOME$/WebstormProjects/WaftEngine/.idea/WaftEngine.iml" filepath="$USER_HOME$/WebstormProjects/WaftEngine/.idea/WaftEngine.iml" />
     </modules>
   </component>
 </project>
