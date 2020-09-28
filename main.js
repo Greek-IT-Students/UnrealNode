@@ -1,14 +1,16 @@
 
 'use strict';
-const SetDefaultResposeHeaders =  require("./ResposeHeaders").DefaultResposeHeaders;
+import {HandleErrors} from "./handleErrors";
 
+const SetDefaultResposeHeaders =  require("./ResposeHeaders").DefaultResposeHeaders;
+const ErrorLog =  require("./models/ErrorLog.js");
+const fs = require('fs');
 const bodyParser = require('body-parser');
 const express = require('express');
 const replacer = require('./replacer.js');
 const router = require('./router.js')
 const mongoose = require('mongoose')
 const hpp = require('hpp');
-
 mongoose.connect('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false',{
     useNewUrlParser: true,
     useCreateIndex: false,
@@ -40,18 +42,22 @@ app.use(SetDefaultResposeHeaders());
 app.use('/api/', router);
 
 app.use('/', (req, res, next) => {
-    next(new Error('no method'));
+   let error = new Error('Server Error, we will work on fixing it, if the error persists contact us')
+    error.details = '---Error route not found---'
+    next(error);
+
 });
 
 app.use(function (err, req, res, next) {
-    console.error(err);
-
-    res.json({status: 400, message: err.message});
+    HandleErrors(err,req,res,next);
+    //console.error(err.details);
+    //res.json({status: 400, message: err.message});
 });
 
 process.on('uncaughtException', function (err) {
-    console.error('uncaughtException: ', err.message);
-    console.error(err.stack);
+    HandleErrors(err);
+    //console.error('uncaughtException: ', err.message);
+    // console.error(err.stack);
 });
 
 let server = app.listen(app.get('port'), function () {

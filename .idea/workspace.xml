@@ -23,21 +23,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d600cf13-201c-49d0-beae-af97e6eda73f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ResposeHeaders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/UnrealNode.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/UnrealNode.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handleErrors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/ErrorLog.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/account.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/account.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/router.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -68,6 +69,9 @@
       <updated>1600963150959</updated>
       <workItem from="1600963152049" duration="13751000" />
       <workItem from="1601014944633" duration="15218000" />
+      <workItem from="1601102065761" duration="3431000" />
+      <workItem from="1601232786473" duration="862000" />
+      <workItem from="1601280631645" duration="9187000" />
     </task>
     <servers />
   </component>
@@ -91,14 +95,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="453" y="384" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1601033381518" />
-    <state width="600" height="428" key="javadoc.popup" timestamp="1601044057214">
+    <state width="1232" height="630" key="javadoc.popup" timestamp="1601280741730">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="600" height="428" key="javadoc.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601044057214" />
-    <state x="684" y="311" width="672" height="678" key="search.everywhere.popup" timestamp="1601042710877">
+    <state width="1232" height="630" key="javadoc.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601280741730" />
+    <state x="684" y="311" width="672" height="678" key="search.everywhere.popup" timestamp="1601103019139">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="684" y="311" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601042710877" />
+    <state x="684" y="311" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601103019139" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -106,7 +110,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$USER_HOME$/WebstormProjects/WaftEngine/server/app.js</url>
           <line>11</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
